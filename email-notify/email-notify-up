@@ -1,4 +1,5 @@
 #!/bin/bash
 
-node /home/cubesat/Desktop/CubeSatOS/email-notify/index.js
-
+echo "=========================== WiFi up!" >> /home/cubesat/Desktop/up.log
+date >> /home/cubesat/Desktop/up.log
+node /home/cubesat/Desktop/CubeSatOS/email-notify/index.js >> /home/cubesat/Desktop/up.log
