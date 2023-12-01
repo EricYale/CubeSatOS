@@ -1,0 +1,15 @@
+{
+  "name": "email-notify",
+  "version": "1.0.0",
+  "description": "Simple service to send an email with the IP address on boot.",
+  "main": "index.js",
+  "scripts": {
+	"start": "node index.js"
+  },
+  "author": "Eric Yoon",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nodemailer": "^6.9.7",
+    "os": "^0.1.2"
+  }
+}

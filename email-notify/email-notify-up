@@ -1,0 +1,4 @@
+#!/bin/bash
+
+node /home/cubesat/Desktop/CubeSatOS/email-notify/index.js
+
