@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 PORT = 1234
 CAMERA_HEIGHT = 24
 CAMERA_WIDTH = 32
+CAMERA_POLL_RATE = 0.3
 
 L_MOTOR_HI_PIN = 5
 L_MOTOR_LO_PIN = 0
@@ -91,7 +92,7 @@ def camera_task():
 			continue
 		
 		socket.emit("camera_data", frame)
-		socket.sleep(1)
+		socket.sleep(CAMERA_POLL_RATE)
 
 camera_thread = socket.start_background_task(camera_task)
 eventlet.wsgi.server(eventlet.listen(('', PORT)), app)
