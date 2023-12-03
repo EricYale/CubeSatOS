@@ -1,4 +1,6 @@
 numpy
 matplotlib
-adafruit_mlx90640
+adafruit-circuitpython-mlx90640
+python-socketio
+eventlet
 
