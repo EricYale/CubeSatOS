@@ -7,6 +7,9 @@ public class UIController : MonoBehaviour
     public GameObject ipSelectScreen;
     public GameObject controllerScreen;
 
+    public IPSelectUI ipSelectUI;
+    public ControllerUI controllerUI;
+
     private void Start()
     {
         

@@ -63,7 +63,7 @@ public class SocketClient : MonoBehaviour
         socket.OnUnityThread("camera_data", response =>
         {
             Debug.Log("Received camera data");
-            Debug.Log(response);
+            ui.controllerUI.DisplayCamera(response.GetValue<float[]>());
         });
 
         Debug.Log("Attempting to connect...");
@@ -75,7 +75,7 @@ public class SocketClient : MonoBehaviour
         if (!socket.Connected)
         {
             Debug.LogWarning("Tried to send motor powers, but socket is disconnected.");
-            registerDisconnectedOnNextThread = true;
+            //registerDisconnectedOnNextThread = true;
             return;
         }
         var data = new Dictionary<string, float>();
