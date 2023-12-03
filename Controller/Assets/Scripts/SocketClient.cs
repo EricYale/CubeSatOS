@@ -20,6 +20,7 @@ public class SocketClient : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            registerDisconnectedOnNextThread = true;
         }
         else
         {
@@ -83,5 +84,10 @@ public class SocketClient : MonoBehaviour
         data["c"] = camera;
         socket.Emit("set_motor_powers", data);
         Debug.Log("Emitted motor powers!\t" + left + ",\t" + right + ",\t" + camera);
+    }
+
+    public void Disconnect()
+    {
+        socket.Disconnect();
     }
 }
