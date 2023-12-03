@@ -3,4 +3,4 @@ matplotlib
 adafruit-circuitpython-mlx90640
 python-socketio
 eventlet
-
+RPi.GPIO
