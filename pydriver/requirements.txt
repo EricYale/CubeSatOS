@@ -1,0 +1,4 @@
+numpy
+matplotlib
+adafruit_mlx90640
+
