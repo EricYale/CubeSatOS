@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 
 public class ControllerUI : MonoBehaviour
 {
-    public float pollingTime = 0.1f;
+    public float cameraSensitivityScaling = 0.2f;
+    public float pollingTime = 0.05f;
     public int cameraWidth = 32;
     public int cameraHeight = 24;
     public Image cameraImage;
+    public TMP_Text text;
 
     Coroutine controlCoroutine;
 
@@ -80,7 +83,7 @@ public class ControllerUI : MonoBehaviour
             }
             else if (touch.screenPosition.x < Screen.width * 2 / 3)
             {
-                cam = mapped;
+                cam = mapped * cameraSensitivityScaling;
             }
             else
             {
@@ -112,5 +115,6 @@ public class ControllerUI : MonoBehaviour
         texture.filterMode = FilterMode.Trilinear;
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, cameraWidth, cameraHeight), Vector2.zero);
         cameraImage.sprite = sprite;
+        text.text = "Min: " + min.ToString("0.00") + ", Max: " + max.ToString("0.00");
     }
 }
