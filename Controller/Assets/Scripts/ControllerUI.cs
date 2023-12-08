@@ -32,7 +32,7 @@ public class ControllerUI : MonoBehaviour
         for (int i = 0; i < random.Length; i++)
         {
             random[i] = Random.Range(0, 30);
-            //random[i] = i % cameraWidth;
+            random[i] = i % cameraWidth;
         }
         DisplayCamera(random);
     }
@@ -99,14 +99,21 @@ public class ControllerUI : MonoBehaviour
         float max = temperatures.Max();
         float range = max - min;
 
-        float[] outOf255 = temperatures.Select(i => (i - min) / range * 255).ToArray();
+        float[] asPercent = temperatures.Select(i => (i - min) / range).ToArray();
         byte[] bytes = new byte[3 * temperatures.Length];
-        for (int i = 0; i < outOf255.Length; i++)
+        for (int i = 0; i < asPercent.Length; i++)
         {
-            uint value = (uint)outOf255[i];
-            bytes[i * 3] = (byte)value;
-            bytes[i * 3 + 1] = 0;
-            bytes[i * 3 + 2] = 0;
+            float percent = asPercent[i];
+            Color color = percent < 0.5f ?
+                Color.Lerp(Color.blue, Color.white, percent / 0.5f) :
+                Color.Lerp(Color.white, Color.red, (percent - 0.5f) / 0.5f);
+
+            uint r = (uint)(color.r * 255);
+            uint g = (uint)(color.g * 255);
+            uint b = (uint)(color.b * 255);
+            bytes[i * 3] = (byte)r;
+            bytes[i * 3 + 1] = (byte)g;
+            bytes[i * 3 + 2] = (byte)b;
         }
 
         Texture2D texture = new Texture2D(cameraWidth, cameraHeight, TextureFormat.RGB24, false);
