@@ -1241,8 +1241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83341fd5bab545bca4cdbea95f524ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSensitivityScaling: 0.2
-  pollingTime: 0.2
+  cameraSensitivityScaling: 0.35
+  pollingTime: 0.1
   cameraWidth: 32
   cameraHeight: 24
   cameraImage: {fileID: 579161418}
